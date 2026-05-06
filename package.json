@@ -1,0 +1,11 @@
+{
+  "name": "stockmart",
+  "version": "1.0.0",
+  "description": "Stockmart — Sistem Manajemen Stok Supermarket",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "setup": "cd server && npx prisma migrate dev --name init && npm run seed"
+  }
+}
