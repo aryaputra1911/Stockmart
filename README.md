@@ -40,6 +40,15 @@ stockmart/
         └── seed.js        # Data awal
 ```
 
+## 🎨 Komponen Frontend
+
+Beberapa komponen utama yang digunakan dalam aplikasi:
+- Navbar → Navigasi utama aplikasi
+- Sidebar → Menu halaman (Dashboard, Produk, Kategori, dll)
+- Modal → Form tambah/edit data
+- SearchBar → Pencarian data secara real-time
+- ConfirmDialog → Konfirmasi sebelum menghapus data
+
 ## 🚀 Cara Setup & Menjalankan
 
 ### 1. Siapkan Database PostgreSQL
