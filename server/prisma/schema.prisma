@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  admin
+  staff
+}
+
+enum JenisTransaksi {
+  masuk
+  keluar
+}
+
+model User {
+  id         Int             @id @default(autoincrement())
+  nama       String
+  email      String          @unique
+  password   String
+  role       Role            @default(staff)
+  created_at DateTime        @default(now())
+  deleted_at DateTime?
+  transaksi  TransaksiStok[]
+
+  @@map("users")
+}
+
+model Kategori {
+  id            Int       @id @default(autoincrement())
+  nama_kategori String
+  deskripsi     String?
+  created_at    DateTime  @default(now())
+  deleted_at    DateTime?
+  produk        Produk[]
+
+  @@map("kategori")
+}
+
+model Produk {
+  id          Int             @id @default(autoincrement())
+  nama_produk String
+  harga       Decimal         @db.Decimal(15, 2)
+  stok        Int             @default(0)
+  kategori_id Int
+  created_at  DateTime        @default(now())
+  updated_at  DateTime        @updatedAt
+  deleted_at  DateTime?
+  kategori    Kategori        @relation(fields: [kategori_id], references: [id])
+  transaksi   TransaksiStok[]
+
+  @@map("produk")
+}
+
+model TransaksiStok {
+  id         Int            @id @default(autoincrement())
+  produk_id  Int
+  user_id    Int
+  jenis      JenisTransaksi
+  jumlah     Int
+  keterangan String?
+  created_at DateTime       @default(now())
+  produk     Produk         @relation(fields: [produk_id], references: [id])
+  user       User           @relation(fields: [user_id], references: [id])
+
+  @@map("transaksi_stok")
+}
