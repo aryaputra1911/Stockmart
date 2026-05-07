@@ -146,7 +146,7 @@ users (1) ────────── (N) transaksi_stok
 produk (1) ─────────(N) transaksi_stok  
 kategori (1) ───────(N) produk
 ```
-
+ 
 **Constraint:** `email` UNIQUE di tabel `users`
 
 ## 🔐 Role & Akses
