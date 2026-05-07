@@ -2,9 +2,13 @@ import { X } from 'lucide-react';
 
 export default function Modal({ isOpen, onClose, title, children, maxWidth = 'max-w-lg' }) {
   if (!isOpen) return null;
-
   return (
-    <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
+    <div
+      className="modal-overlay"
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <div className={`modal-box ${maxWidth}`}>
         {/* Header */}
         <div
@@ -31,4 +35,4 @@ export default function Modal({ isOpen, onClose, title, children, maxWidth = 'ma
       </div>
     </div>
   );
-}
+} 
