@@ -94,7 +94,7 @@ export default function Login() {
 
         {/* Footer */}
         <p className="relative text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
-          © 2024 Stockmart — Sistem Manajemen Stok Supermarket
+          © 2026 Stockmart — Sistem Manajemen Stok Supermarket
         </p>
       </div>
 
